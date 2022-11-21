@@ -1,0 +1,41 @@
+<style>
+    .center {
+  padding: 70px 0;
+  border: 1px solid rgb(64, 91, 130);;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: auto;
+  width: 80%;
+}
+</style>
+
+<div class="center">
+
+
+
+<a href="{% url 'home'%}">Back to Main</a>
+
+<a href="{%url 'register_record'%}">Create record</a>
+<h1>All Record</h1>
+<table class="center">
+    <tr>
+        <th>Email</th>
+        <th>Disease Code</th>
+        <th>Total Patients</th>
+        <th>Total Deaths</th>
+    </tr>
+    {% for object in object_list %}
+    <tr>
+        <td>{{object.email}}</td>
+        <td>{{object.disease_code}}</td>
+        <td>{{object.cname}}</td>
+        <td>{{object.total_deaths}}</td>
+        <td>{{object.total_patients}}</td>
+        <td><a href="{%url 'updateRecord' email=object.email cname=object.cname disease_code=object.disease_code%}">Edit</a>
+            <a href="{%url 'deleteRecord' email=object.email cname=object.cname disease_code=object.disease_code%}">Delete</a></td>
+    </tr>
+    {%endfor%}
+</table>
+
+</div>

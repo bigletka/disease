@@ -1,0 +1,40 @@
+<style>
+    .center {
+  padding: 70px 0;
+  border: 1px solid rgb(64, 91, 130);;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: auto;
+  width: 80%;
+}
+</style>
+<div class="center">
+    <a href="{% url 'home'%}">Back to Main</a>
+
+    <a href="{%url 'register_discover'%}">Create Discovery</a>
+    <h1>All Discovery:</h1>
+    <table class="center">
+       
+        <tr>
+            <th>Disease Code</th>
+            <th>Country Name</th>
+            <th>First Encountered date</th>
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td> {{object.disease_code}}</td>
+            <td>{{object.cname}}</td>
+            <td> {{object.first_enc_date}}</td>
+            <td><a href="{%url 'updateDiscovery' cname=object.cname disease_code=object.disease_code%}">Edit</a>
+                <a href="{%url 'deleteDiscovery' cname=object.cname disease_code=object.disease_code%}">Edit</a>
+                </td>
+        </tr>
+        
+       
+       
+        
+        {%endfor%}
+    </table>
+   
+</div>
